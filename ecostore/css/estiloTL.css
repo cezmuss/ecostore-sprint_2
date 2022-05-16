@@ -11,7 +11,7 @@ body *{
 
 .main-login{
     width: 100vw;
-    height: 100vh;
+    height: 50;
     background: rgb(128, 235, 128);
     display: flex;
     justify-content: center;
@@ -20,7 +20,7 @@ body *{
 
 .left-login{
     width: 50vw;
-    height: 100vw;
+    height: 50vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,7 +38,7 @@ body *{
 
 .right-login{
     width: 50vw;
-    height: 100vw;
+    height: 50vw;
     display: flex;
     justify-content: center;
     align-items: center;
