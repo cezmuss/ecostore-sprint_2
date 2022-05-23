@@ -35,7 +35,7 @@
 
 	// Faz Select na Base de Dados
 	$sql = "BEGIN;
-        INSERT INTO Usuario (Nome, Login, Senha, DataNasc, Email, CPF, Telefone) VALUES ('$nome','$login','$senha','$email', 'cnpj', '$cpf');
+        INSERT INTO Usuario (Nome, Login, Senha, DataNasc, Email, CPF, Telefone) VALUES ('$nome','$login','$senha','$email', '$cnpj', '$cpf');
             INSERT INTO Telefone (CodUsu, NumTel) VALUES (LAST_INSERT_ID(), '$telefone');
          COMMIT;";
 
