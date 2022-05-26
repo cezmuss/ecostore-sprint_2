@@ -37,7 +37,7 @@
 
          $mysql_query($query,$conexao);
          echo "Seu cadastro foi realizado com sucesso!<br>Agradecemos a atenção.";
-         ?> 
+    ?> 
 		
 
 
