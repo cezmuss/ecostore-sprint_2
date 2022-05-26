@@ -36,22 +36,23 @@ ENGINE = InnoDB;
 
 
 create table Vendedor(
-	CodVend int NOT NULL AUTO_INCREMENT,
+	CodVendedor int NOT NULL AUTO_INCREMENT,
     CodUsu int NOT NULL,
     NomeEmp varchar(50),
     Descricao varchar(255),
-    primary key (CodVend)
+    primary key (CodVendedor)
 )
 ENGINE = InnoDB;
 
 
 create table Produto(
 	CodProduto int NOT NULL AUTO_INCREMENT,
-    #CodVend int NOT NULL,
+    CodVendedor int NOT NULL,
     Validade date,
     Descricao varchar(255),
     ValorUni double,
     Foto mediumblob,
+    Estoque int,
     primary key (CodProduto)
 )
 ENGINE = InnoDB;
@@ -60,14 +61,23 @@ ENGINE = InnoDB;
 create table Venda(
 	CodVenda int NOT NULL AUTO_INCREMENT,
     CodUsu int NOT NULL,
-    CodProduto int,
+#    CodProduto int,
+#    CodCarrinho int NOT NULL,
     FormPag varchar(25),
-    Quantidade int,
-    DataPag date,
+    Valor double,
+    DataPagamento datetime,
     primary key (CodVenda)
 )
 ENGINE = InnoDB;
 
+create table Carrinho(
+    CodUsu int NOT NULL,
+    CodProduto int NOT NULL,
+    Quantidade int,
+    CodVenda int,
+    Finalizado boolean
+)
+ENGINE = InnoDB;
 
 #alter table Usuario
 #add foreign key (Endereco) references Endereco(CodEnd),
@@ -83,9 +93,15 @@ add foreign key (CodUsu) references Usuario(CodUsu);
 alter table Vendedor
 add foreign key (CodUsu) references Usuario(CodUsu);
 
-#alter table Produto
-#add foreign key (CodVend) references Vendedor(CodVend);
+alter table Produto
+add foreign key (CodVendedor) references Vendedor(CodVendedor);
 
 alter table Venda
+add foreign key (CodUsu) references Usuario(CodUsu);
+#add foreign key (CodCarrinho) references Carrinho(CodCarrinho);
+#add foreign key (CodProduto) references Produto(CodProduto);
+
+alter table Carrinho
 add foreign key (CodUsu) references Usuario(CodUsu),
-add foreign key (CodProduto) references Produto(CodProduto);
+add foreign key (CodProduto) references Produto(CodProduto),
+add foreign key (CodVenda) references Venda(CodVenda);

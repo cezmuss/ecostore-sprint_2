@@ -7,6 +7,6 @@ global $database;
 $servername = "localhost";
 $userame = "root";
 $password="";
-$database = "ecostore";
+$database = "EcoStore";
 
 ?>
