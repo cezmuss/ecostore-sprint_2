@@ -28,6 +28,7 @@ create table Endereco(
     Rua varchar(50),
     CEP int,
     Numero int,
+    Bairro varchar(25),
     Complemento varchar(25)
 )
 ENGINE = InnoDB;
