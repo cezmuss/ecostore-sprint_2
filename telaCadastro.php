@@ -33,7 +33,7 @@
 
     // Faz Insert na Base de Dados
     $sql = "BEGIN;
-            INSERT INTO Usuario (Nome, LoginS, Senha, DataNasc, Email, CPF_CNPJ, TipoUsuario) 
+            INSERT INTO Usuario (Nome, LoginS, Senha, DataNasc, Email, CPF, TipoUsuario) 
                 VALUES ('$nome','$login','$senha','$dataNasc','$email', '$cpf', 'Comprador');
             INSERT INTO Telefone (CodUsu, NumTel) VALUES (LAST_INSERT_ID(), '$telefone');
             COMMIT;"; //TODO ENDEREÇO PARA USUARIO

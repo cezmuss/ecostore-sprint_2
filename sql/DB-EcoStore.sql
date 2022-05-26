@@ -8,7 +8,7 @@ create table Usuario(
     Nome varchar(25),
     DataNasc date,
     Senha varchar(100),
-    CPF_CNPJ int,
+    CPF int,
     TipoUsuario varchar(10),
     primary key (CodUsu)
 )
@@ -17,8 +17,7 @@ ENGINE = InnoDB;
 create table Telefone(
 #	CodTel int NOT NULL AUTO_INCREMENT,
     CodUsu int NOT NULL,
-    Numtel varchar(20),
-    primary key (CodTel)
+    Numtel varchar(20)
 )
 ENGINE = InnoDB;
 
@@ -29,8 +28,7 @@ create table Endereco(
     Rua varchar(50),
     CEP int,
     Numero int,
-    Complemento varchar(25),
-	primary key (CodEnd)
+    Complemento varchar(25)
 )
 ENGINE = InnoDB;
 
@@ -40,6 +38,7 @@ create table Vendedor(
     CodUsu int NOT NULL,
     NomeEmp varchar(50),
     Descricao varchar(255),
+    Cnpj int,
     primary key (CodVendedor)
 )
 ENGINE = InnoDB;

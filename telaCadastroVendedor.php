@@ -37,13 +37,14 @@
 
     // Faz Insert na Base de Dados
     $sql = "BEGIN;
-        INSERT INTO Usuario (Nome, LoginS, Senha, Email, CPF_CNPJ, TipoUsuario) 
-            VALUES ('$nome','$login','$senha','$email', '$cnpj', 'Vendedor');
+        INSERT INTO Usuario ( LoginS, Senha, Email, TipoUsuario) 
+            VALUES ('$login','$senha','$email', 'Vendedor');
         INSERT INTO Telefone (CodUsu, NumTel) VALUES (LAST_INSERT_ID(), '$telefone');
-        INSERT INTO Endereco (CodUsu, Rua, CEP, Numero)
-            VALUES (LAST_INSERT_ID(), '$rua', '$cep', '$numero');
-        INSERT INTO Vendedor (CodUsu) VALUES (LAST_INSERT_ID());
-        COMMIT;"; //TODO 'REFERENCIA' e INSERT completo para tabela Vendedor
+        INSERT INTO Endereco (CodUsu, Rua, CEP, Numero, Complemento)
+            VALUES (LAST_INSERT_ID(), '$rua', '$cep', '$numero', $referencia);
+        INSERT INTO Vendedor (CodUsu, NomeEmp, Cnpj) 
+            VALUES (LAST_INSERT_ID(), '$nomeEmp', '$cnpj');
+        COMMIT;"; 
 
     if ($conn->multi_query($sql) === true){
         echo "Seu cadastro foi realizado com sucesso!<br>Agradecemos a atenção.";
