@@ -36,7 +36,7 @@
             $_SESSION['LoginS'] = $login;
             $_SESSION['Senha'] = $senha;
 
-            header('Location: '); //aqui tem q colocar onde o login vai levar caso de certo
+            header('Location: menu.html');
 
             /* 
             <?php
