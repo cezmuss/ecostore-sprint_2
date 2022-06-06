@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    session_start(); 
    if(isset($_POST['submit']) && !empty($_POST['login']) && !empty($_POST['senha']))
    {
 
