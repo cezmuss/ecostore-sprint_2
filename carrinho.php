@@ -20,18 +20,6 @@
         $conn->query('SET character_set_connection=utf8');
         $conn->query('SET character_set_client=utf8');
         $conn->query('SET character_set_results=utf8');
-
-        // Faz Insert na Base de Dados
-        $sql = "BEGIN;
-                INSERT INTO Usuario (Nome, LoginS, Senha, DataNasc, Email, CPF, TipoUsuario) 
-                    VALUES ('$nome','$login','$senha','$dataNasc','$email', '$cpf', 'Comprador');
-                INSERT INTO Telefone (CodUsu, NumTel) VALUES (LAST_INSERT_ID(), '$telefone');
-                COMMIT;"; //TODO ENDEREÇO PARA USUARIO
-
-        $conn->query($sql);
-
-        echo "Seu cadastro foi realizado com sucesso!<br>Agradecemos a atenção.";
-        $conn->close();
     ?>
 
 </body>
