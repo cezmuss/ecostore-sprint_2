@@ -22,7 +22,18 @@ create table Telefone(
 ENGINE = InnoDB;
 
 
-create table Endereco(
+create table EnderecoVendedor(
+#	CodEnd int NOT NULL AUTO_INCREMENT,
+    CodVendedor int NOT NULL,
+    Rua varchar(50),
+    CEP int,
+    Numero int,
+    Bairro varchar(25),
+    Complemento varchar(25)
+)
+ENGINE = InnoDB;
+
+create table EnderecoComprador(
 #	CodEnd int NOT NULL AUTO_INCREMENT,
     CodUsu int NOT NULL,
     Rua varchar(50),
@@ -32,7 +43,6 @@ create table Endereco(
     Complemento varchar(25)
 )
 ENGINE = InnoDB;
-
 
 create table Vendedor(
 	CodVendedor int NOT NULL AUTO_INCREMENT,
@@ -87,7 +97,10 @@ ENGINE = InnoDB;
 alter table Telefone
 add foreign key (CodUsu) references Usuario(CodUsu);
 
-alter table Endereco
+alter table EnderecoVendedor
+add foreign key (CodVendedor) references Vendedor(CodVendedor);
+
+alter table EnderecoComprador
 add foreign key (CodUsu) references Usuario(CodUsu);
 
 alter table Vendedor
