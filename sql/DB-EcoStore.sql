@@ -8,7 +8,7 @@ create table Usuario(
     Nome varchar(25),
     DataNasc date,
     Senha varchar(100),
-    CPF int,
+    CPF VARCHAR(25),
     TipoUsuario varchar(10),
     primary key (CodUsu)
 )
@@ -22,7 +22,18 @@ create table Telefone(
 ENGINE = InnoDB;
 
 
-create table Endereco(
+create table EnderecoVendedor(
+#	CodEnd int NOT NULL AUTO_INCREMENT,
+    CodVendedor int NOT NULL,
+    Rua varchar(50),
+    CEP int,
+    Numero int,
+    Bairro varchar(25),
+    Complemento varchar(25)
+)
+ENGINE = InnoDB;
+
+create table EnderecoComprador(
 #	CodEnd int NOT NULL AUTO_INCREMENT,
     CodUsu int NOT NULL,
     Rua varchar(50),
@@ -33,13 +44,12 @@ create table Endereco(
 )
 ENGINE = InnoDB;
 
-
 create table Vendedor(
 	CodVendedor int NOT NULL AUTO_INCREMENT,
     CodUsu int NOT NULL,
     NomeEmp varchar(50),
     Descricao varchar(255),
-    Cnpj int,
+    Cnpj VARCHAR(25),
     primary key (CodVendedor)
 )
 ENGINE = InnoDB;
@@ -48,6 +58,7 @@ ENGINE = InnoDB;
 create table Produto(
 	CodProduto int NOT NULL AUTO_INCREMENT,
     CodVendedor int NOT NULL,
+    NomeProduto VARCHAR(64),
     Validade date,
     Descricao varchar(255),
     ValorUni double,
@@ -87,7 +98,10 @@ ENGINE = InnoDB;
 alter table Telefone
 add foreign key (CodUsu) references Usuario(CodUsu);
 
-alter table Endereco
+alter table EnderecoVendedor
+add foreign key (CodVendedor) references Vendedor(CodVendedor);
+
+alter table EnderecoComprador
 add foreign key (CodUsu) references Usuario(CodUsu);
 
 alter table Vendedor
