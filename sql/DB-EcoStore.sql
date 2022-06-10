@@ -58,6 +58,7 @@ ENGINE = InnoDB;
 create table Produto(
 	CodProduto int NOT NULL AUTO_INCREMENT,
     CodVendedor int NOT NULL,
+    NomeProduto VARCHAR(64),
     Validade date,
     Descricao varchar(255),
     ValorUni double,
