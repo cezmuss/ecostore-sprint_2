@@ -8,7 +8,7 @@ create table Usuario(
     Nome varchar(25),
     DataNasc date,
     Senha varchar(100),
-    CPF int,
+    CPF VARCHAR(25),
     TipoUsuario varchar(10),
     primary key (CodUsu)
 )
@@ -49,7 +49,7 @@ create table Vendedor(
     CodUsu int NOT NULL,
     NomeEmp varchar(50),
     Descricao varchar(255),
-    Cnpj int,
+    Cnpj VARCHAR(25),
     primary key (CodVendedor)
 )
 ENGINE = InnoDB;
