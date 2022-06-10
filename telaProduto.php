@@ -1,49 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Produto</title>
+    <link rel="shortcut icon" href="imagens/logo.png"/>
+    <link rel="stylesheet" href="css/estiloTP.css">
+    <title>Cadastrar produto</title>
+
 </head>
 <body>
-<?php require 'conexao.php'?>
-<?php
-
-    $nomeProduto = $_REQUEST['nomeProduto'];
-    $descricao = $_REQUEST['descricao'];
-    $categoria = $_REQUEST['categoria'];
-    $imagem = $_REQUEST['imagem'];
-    $cep = $_REQUEST['cep'];
-    $telefone = $_REQUEST['telefone'];
-
-    // criar conexao
-    $conn = new mysqli($servername, $username, $password, $database);
-
-    // Verifica conexão
-    if ($conn->connect_error) {
-        die("Conexão Falhou: " . $conn->connect_error);
-    }
-    // Configura para trabalhar com caracteres acentuados do português
-    $conn->query("SET NAMES 'utf8'");
-    $conn->query('SET character_set_connection=utf8');
-    $conn->query('SET character_set_client=utf8');
-    $conn->query('SET character_set_results=utf8');
-
-    // Faz Insert na Base de Dados
-    $sql = "BEGIN;
-            INSERT INTO Produto (NomeProduto, Descricao, Categoria, Foto, Telefone) 
-                VALUES ('$nomeProduto','$descricao','$categoria','$imagem', '$cep', '$telefone');
-            INSERT INTO Telefone (CodUsu, NumTel) VALUES (LAST_INSERT_ID(), '$telefone');
-            COMMIT;"; //TODO ENDEREÇO PARA USUARIO
-
-    $conn->query($sql);
-
-    echo "Seu Produto foi cadastrado com sucesso!<br>Agradecemos a atenção.";
-    $conn->close();
-    ?>
-
-?>
-
+    <div class="box">
+        <form action="">
+            <fieldset>
+                <legend><b>Anunciar produto</b></legend>
+                <br>
+                <div class="inputBox">
+                    <input type="text" name="nome" id="titulo" class="inputUser" required>
+                    <label for="nome" class="labelInput">Título</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="descricao" id="descricao" class="inputUser" required>
+                    <label for="descricao" class="labelInput">Descrição</label>
+                </div>
+                <br>
+                <p>Categoria:</p>
+                <input type="radio" id="casa" name="casa" value="casa" required>
+                <label for="casa">Para casa</label>
+                <br>
+                <input type="radio" id="masculino" name="higiene" value="higiene" required>
+                <label for="higiene">Higiene</label>
+                <br>
+                <input type="radio" id="acessorios" name="acessorios" value="acessorios" required>
+                <label for="acessorios">Acessórios</label>
+                <br>
+                <input type="radio" id="alimentacao" name="alimentacao" value="alimentacao" required>
+                <label for="alimentacao">Alimentação</label>
+                <br><br>
+                <label for="fotos">Imagens:</label>
+                <input type="file" name="fotos" id="fotos" accept=".jpg, .png, .jpeg" required>
+                <br><br><br>
+                <div class="inputBox">
+                    <input type="number" name="CEP" id="CEP" class="inputUser" required>
+                    <label for="estado" class="labelInput">CEP</label>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <input type="tel" name="tel" id="tel" class="inputUser" required>
+                    <label for="endereco" class="labelInput">Telefone </label>
+                </div>
+                <br><br>
+                <input type="submit" name="submit" id="submit">
+            </fieldset>
+        </form>
+    </div>
 </body>
 </html>

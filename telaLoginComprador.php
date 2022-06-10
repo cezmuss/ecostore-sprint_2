@@ -1,66 +1,36 @@
-<?php
-    session_start(); 
-   if(isset($_POST['submit']) && !empty($_POST['login']) && !empty($_POST['senha']))
-   {
-
-        include_once('conexao.php');
-        // Cria conexão
-        $conn = new mysqli($servername, $username, $password, $database);
-
-        
-        // Verifica conexão
-        if ($conn->connect_error) {
-            die("Conexão Falhou: " . $conn->connect_error);
-        }
-        // Configura para trabalhar com caracteres acentuados do português
-        $conn->query("SET NAMES 'utf8'");
-        $conn->query('SET character_set_connection=utf8');
-        $conn->query('SET character_set_client=utf8');
-        $conn->query('SET character_set_results=utf8');
-
-        $login = $_POST['login'];
-        $senha = $_POST['senha'];
-
-        $sql = "SELECT * FROM usuario WHERE LoginS = '$login' and Senha = '$senha'";
-
-        $result = $conn->query($sql);
-
-        if(mysqli_num_rows($result)> 1)
-        {
-            unset($_SESSION['LoginS']);
-            unset($_SESSION['Senha']);
-            header('Location: telaLoginComprador.html');
-        }
-        else
-        {
-            $_SESSION['LoginS'] = $login;
-            $_SESSION['Senha'] = $senha;
-
-            header('Location: menu.html');
-
-            /* 
-            <?php
-            
-                session_start();
-                if((!isset($_SESSION['LoginS']) == true) and (!isset($_SESSION['Senha']) == true))
-                {
-                    unset($_SESSION['LoginS']);
-                    unset($_SESSION['Senha']);
-                    header('Location: telaLoginComprador.html');
-                }
-                $logado = $_SESSION['LoginS'];
-
-            ?>
-
-
-            */
-
-
-        }
-
-   }
-   else{
-       header('Location: telaLoginComprador.html');
-   }
-
-?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imagens/logo.png"/>
+    <link rel="stylesheet" href="css/estiloTLC.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="main-login">
+        <div class="left-login">
+            <h1>Bem-vindo a EcoStore<br>Faça seu login ou<br>Cadastre-se</h1>
+            <img src="imagens/logo.png" class="left-login-image" alt="logotipo">
+        </div>
+        <div class="right-login">
+            <div class="card-login">
+                <h1>Login</h1>
+                <div class="textfield">
+                    <label for="usuario">Usuário</label>
+                    <input type="text" name="usuario" placeholder="Usuário" required>
+                </div> 
+                <div class="textfield">
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha" placeholder="Senha" required>
+                </div>
+                <button class="btn-login" type="submit" name="submit" id="submit">Entrar</button>   
+                <p>Não possui login? 
+                    <a href="telaCadastroComprador.php">Cadastre-se</a>.
+                    </p>
+            </div>    
+        </div>
+    </div>
+</body>
+</html>

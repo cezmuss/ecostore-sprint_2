@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imagens/logo.png"/>
+    <link rel="stylesheet" href="css/estiloTCC.css">
+    <title>Cadastro</title>
 </head>
-
 <body>
-    <?php require 'conexao.php' ?>
-    <?php
-    $nome = $_REQUEST['nome'];
-    $login = $_REQUEST['login'];
-    $senha = md5($_REQUEST['senha']);
-    $dataNasc = $_REQUEST['dataNasc'];
-    $email = $_REQUEST['email'];
-    $cpf = $_REQUEST['cpf'];
-    $telefone = $_REQUEST['telefone'];
-
-    // Cria conexão
-    $conn = new mysqli($servername, $username, $password, $database);
-
-    // Verifica conexão
-    if ($conn->connect_error) {
-        die("Conexão Falhou: " . $conn->connect_error);
-    }
-    // Configura para trabalhar com caracteres acentuados do português
-    $conn->query("SET NAMES 'utf8'");
-    $conn->query('SET character_set_connection=utf8');
-    $conn->query('SET character_set_client=utf8');
-    $conn->query('SET character_set_results=utf8');
-
-    // Faz Insert na Base de Dados
-    $sql = "BEGIN;
-            INSERT INTO Usuario (Nome, LoginS, Senha, DataNasc, Email, CPF, TipoUsuario) 
-                VALUES ('$nome','$login','$senha','$dataNasc','$email', '$cpf', 'Comprador');
-            INSERT INTO Telefone (CodUsu, NumTel) VALUES (LAST_INSERT_ID(), '$telefone');
-            COMMIT;"; //TODO ENDEREÇO PARA USUARIO
-
-    $conn->query($sql);
-
-    echo "Seu cadastro foi realizado com sucesso!<br>Agradecemos a atenção.";
-    $conn->close();
-    ?>
-
-
-
+    <div class="box">
+        <form action="">
+            <fieldset>
+                <legend><b>Cadastro Comprador</b></legend>
+                <br><br>
+                <div class="inputBox">
+                    <label for="nome" class="labelInput">Nome Completo</label>
+                    <input type="text" name="nome" id="nome" class="inputUser" required> 
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <label for="login" class="labelInput">Login</label>
+                    <input type="text" name="login" id="login" class="inputUser" required>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <label for="senha" class="labelInput">Senha</label>
+                    <input type="password" name="senha" id="senha" class="inputUser" required>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <label for="dataNasc">Data de Nascimento</label>
+                    <input type="date" name="dataNasc" id="dataNasc" class="inputUser" required>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <label for="email" class="labelInput">E-mail</label>
+                    <input type="email" name="email" id="email" class="inputUser" required>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <label for="cpf"
+                    class="labelInput">CPF</label>
+                    <input type="number" name="cpf" id="cpf" class="inputUser" required>
+                </div>
+                <br><br>
+                <div class="inputBox">
+                    <label for="telefone" class="labelInput">Telefone</label>
+                    <input type="tel" name="telefone" id="telefone" class="inputUser" required>
+                </div>
+                <br><br>
+                <input type="submit" name="submit" id="submit">
+            </fieldset> 
+        </form>
+    </div>
 </body>
-
 </html>
