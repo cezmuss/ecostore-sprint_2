@@ -6,6 +6,7 @@ create table Usuario(
 	CodUsu int NOT NULL AUTO_INCREMENT,
     LoginS varchar(25),
     Nome varchar(25),
+    Email VARCHAR(64),
     DataNasc date,
     Senha varchar(100),
     CPF VARCHAR(25),

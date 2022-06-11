@@ -19,10 +19,10 @@
         die("Conexão Falhou: " . $conn->connect_error);
     }
     // Configura para trabalhar com caracteres acentuados do português
-    $conn->query("SET NAMES 'utf8'");
+    /*$conn->query("SET NAMES 'utf8'");
     $conn->query('SET character_set_connection=utf8');
     $conn->query('SET character_set_client=utf8');
-    $conn->query('SET character_set_results=utf8');
+    $conn->query('SET character_set_results=utf8');*/
 
     // Faz Insert na Base de Dados
     $sql = "BEGIN;
@@ -33,7 +33,7 @@
         INSERT INTO Telefone (CodUsu, NumTel) 
             VALUES (LAST_INSERT_ID(), '$telefone');
         INSERT INTO EnderecoVendedor (CodVendedor, Rua, CEP, Numero, Complemento)
-            VALUES (LAST_INSERT_ID(), '$rua', '$cep', '$numero', $referencia);
+            VALUES (LAST_INSERT_ID(), '$rua', '$cep', '$numero', '$referencia');
         COMMIT;";
 
     if ($conn->multi_query($sql) === TRUE){
