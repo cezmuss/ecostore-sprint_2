@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -19,18 +18,19 @@
                 <h1>Login</h1>
                 <div class="textfield">
                     <label for="usuario">Usuário</label>
-                    <input type="text" name="usuario" placeholder="Usuário" required>
+                    <input type="text" name="usuario" id="login" placeholder="Usuário" required>
                 </div> 
                 <div class="textfield">
                     <label for="senha">Senha</label>
-                    <input type="password" name="senha" placeholder="Senha" required>
+                    <input type="password" name="senha" id="senha" placeholder="Senha" required>
                 </div>
-                <button class="btn-login" type="submit" name="submit" id="submit">Entrar</button>   
+                <button class="btn-login" type="submit" name="submit" id="submit">Entrar</button>
                 <p>Não possui login? 
                     <a href="telaCadastroComprador.php">Cadastre-se</a>.
                     </p>
             </div>    
         </div>
     </div>
+    <?php include_once 'execLoginComprador.php'; ?>
 </body>
 </html>

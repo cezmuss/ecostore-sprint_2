@@ -1,9 +1,9 @@
 <?php
     session_start(); 
-   if(isset($_POST['submit']) && !empty($_POST['login']) && !empty($_POST['senha']))
-   {
+    //if(isset($_REQUEST['submit']) && !empty($_REQUEST['login']) && !empty($_REQUEST['senha']))
+    //{
 
-        include_once('conexao.php');
+        include_once 'conexao.php';
         // Cria conexão
         $conn = new mysqli($servername, $username, $password, $database);
 
@@ -18,8 +18,8 @@
         $conn->query('SET character_set_client=utf8');
         $conn->query('SET character_set_results=utf8');
 
-        $login = $_POST['login'];
-        $senha = $_POST['senha'];
+        $login = $_REQUEST['login'];
+        $senha = $_REQUEST['senha'];
 
         $sql = "SELECT * FROM usuario WHERE LoginS = '$login' and Senha = '$senha'";
 
@@ -58,9 +58,9 @@
 
         }
 
-   }
-   else{
-       header('Location: telaLoginComprador.php');
-   }
+   //}
+   //else{
+    //   header('Location: telaLoginComprador.php');
+   //}
 
 ?>
