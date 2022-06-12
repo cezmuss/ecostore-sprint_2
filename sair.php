@@ -1,7 +1,7 @@
 <?php
     session_start();
-    unset($_SESSION['LoginS']);
-    unset($_SESSION['Senha']);
-    header("Location: telaLoginComprador.html")
+    unset($_SESSION['login']);
+    unset($_SESSION['senha']);
+    header("Location: telaLoginComprador.php")
 
 ?>
